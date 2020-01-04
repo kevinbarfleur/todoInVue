@@ -14,8 +14,11 @@
     </header>
     <div class="main">
       <ul class="todo-list">
+        <!-- Affichage des todos: Pour chaque elements dans filteredTodo, on affiche -->
         <li class="todo" v-for="todo in filteredTodos" :key="todo.id">
           <input type="checkbox" v-model="todo.completed" />
+          <!-- {completed: todo.completed} permet de changer dynamiquement la classe 
+          à "completed" si dans le state, todo.completed = true"-->
           <label :class="{completed: todo.completed}">{{ todo.name }}</label>
           <div class="deleteButton" @click="deleteTodo(todo)">
             <i class="fas fa-trash"></i>
@@ -28,6 +31,8 @@
         <strong>{{ remaining }}</strong> Tâches à faire
       </span>
       <ul class="filters">
+        <!-- Pareil qu'avec completed plus haut, la classe des lien 
+        change en fonction de celle définie dans le state-->
         <li>
           <a href="#" :class="{selected: filter === 'all'}" @click.prevent="filter = 'all'">Toutes</a>
         </li>
@@ -62,13 +67,16 @@ export default {
   },
   methods: {
     addTodo() {
+      // Ajout d'une nouvelle todo avec l'état non complété et le texte contenu dans l'input grace au v-model
       this.todos.push({
         completed: false,
         name: this.newTodo
       })
+      // On vide l'input avec l'ajout de la todo
       this.newTodo = ''
     },
     deleteTodo(todo) {
+      // Ici, grace à la fonction filter, on garde dans this.todo toute les todo sauf la todo en parametre
       this.todos = this.todos.filter(i => i !== todo)
     }
   },
@@ -132,6 +140,11 @@ export default {
         opacity: 0;
         transition: 0.2s;
         float: right;
+        color: #ff6e40;
+
+        &:hover {
+          transform: scale(1.2);
+        }
       }
     }
   }

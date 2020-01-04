@@ -1,12 +1,12 @@
 <template>
-  <Todos></Todos>
+  <Todos />
 </template>
 
 <script>
-import Todos from "./components/Todos"
+import Todos from './components/Todos'
 
 export default {
-  name: "app",
+  name: 'app',
   components: {
     Todos
   }
@@ -17,14 +17,10 @@ export default {
 * {
   margin: 0;
   padding: 0;
-  font-family: "Avenir", Helvetica, sans-serif;
-  color: #212121;
+  font-family: 'Avenir', Helvetica, sans-serif;
 }
 
 body {
-  display: flex;
-  // flex-direction: column;
-  justify-content: center;
-  align-content: center;
+  color: #212121;
 }
 </style>
